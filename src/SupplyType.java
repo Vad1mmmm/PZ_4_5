@@ -3,9 +3,22 @@ public enum SupplyType {
     FOOD,
     MEDICAL,
     FUEL,
-    EQUIPMENT
+    EQUIPMENT;
 
-    public SupplyType valueOf(String type ){
-        
+    private static final SupplyType[] ENUM_VALUES = {
+            AMMUNITION, FOOD, MEDICAL, FUEL, EQUIPMENT
+    };
+
+    public static SupplyType[] myValues() {
+        return ENUM_VALUES.clone();
+    }
+    public static SupplyType myValueOf(String type){
+        for (SupplyType t : ENUM_VALUES) {
+            if (t.name().equals(type)) {
+                return t;
+            }
+        }
+        throw new IllegalArgumentException("No such type " + type);
     }
 }
+
