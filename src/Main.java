@@ -1,4 +1,3 @@
-import java.util.ArrayList;
 import java.util.List;
 
 class Main {
@@ -9,9 +8,13 @@ class Main {
                 new Supply("ammunition-7,62", SupplyType.AMMUNITION, 9, 5),
                 new Supply("fuel", SupplyType.FUEL, 10, 15),
                 new Supply("equipment", SupplyType.EQUIPMENT, 6, 2),
-                new Supply("ammunition-5,56", SupplyType.AMMUNITION, 550, 15),
+                new Supply("ammunition-5,56", SupplyType.AMMUNITION, 550, 5),
                 new Supply("food", SupplyType.FOOD, 50, 15),
-                new Supply("fuel-diesel", SupplyType.FUEL, 50, 15)
+                new Supply("fuel-diesel", SupplyType.FUEL, 50, 15),
+                 new Supply("medical1", SupplyType.MEDICAL, 45, 20),
+                 new Supply("medical2", SupplyType.MEDICAL, 45, 10),
+                 new Supply("medical3", SupplyType.MEDICAL, 45, 17),
+                 new Supply("medical4", SupplyType.MEDICAL, 45, 17)
          );
 
          MilitaryInventoryManagement inventory = new MilitaryInventoryManagement();
@@ -28,6 +31,12 @@ class Main {
          System.out.println(inventory.findLongestStoredNonPerishableItem());
          System.out.println("\nШвидкопсувні товари з невеликою кількістю: ");
          inventory.filterPerishableItemsWithLowQuantity(10);
+         System.out.println("\nОтримати всі товари даного типу: ");
+         inventory.getSuppliesByType(SupplyType.FOOD);
+         System.out.println("\nОтримати середній термін придатності медичниго забезпечення: ");
+         System.out.println(inventory.averageStorageDaysForMedicalSupplies());
+         System.out.println(" ");
+         inventory.summaryOfPerishableSuppliesByType();
 
      }
 }

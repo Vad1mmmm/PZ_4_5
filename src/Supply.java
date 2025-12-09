@@ -1,17 +1,18 @@
-import java.util.ArrayList;
-import java.util.LinkedList;
-
 public class Supply {
     private String name;
     private SupplyType type;
      private int quantity;
      private int storageDays;
 
+
      public Supply(String name, SupplyType type, int quantity, int storageDays) {
          this.name = name;
          this.type = type;
          this.quantity = quantity;
          this.storageDays = storageDays;
+     }
+     public String getName() {
+         return name;
      }
 
      public int getQuantity() {
