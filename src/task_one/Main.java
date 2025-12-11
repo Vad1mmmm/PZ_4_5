@@ -1,3 +1,5 @@
+package task_one;
+
 import java.util.List;
 
 class Main {
@@ -35,8 +37,12 @@ class Main {
          inventory.getSuppliesByType(SupplyType.FOOD);
          System.out.println("\nОтримати середній термін придатності медичниго забезпечення: ");
          System.out.println(inventory.averageStorageDaysForMedicalSupplies());
-         System.out.println(" ");
+         System.out.println("Групування забезпечення з малим терміном придатності за типом: ");
          inventory.summaryOfPerishableSuppliesByType();
+         System.out.println("Групування забезпечення за типом: ");
+         inventory.groupSuppliesByType();
+         System.out.println("totalQuantityOfWeaponrySupplies: ");
+         System.out.println(inventory.totalQuantityOfWeaponrySupplies());
 
      }
 }

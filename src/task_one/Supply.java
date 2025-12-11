@@ -1,3 +1,5 @@
+package task_one;
+
 public class Supply {
     private String name;
     private SupplyType type;
@@ -29,6 +31,6 @@ public class Supply {
 
      @Override
      public String toString() {
-         return "Supply: name - " + name + ", type - " + type + ", quantity - " + quantity + ", storageDays - " + storageDays;
+         return "task_one.Supply: name - " + name + ", type - " + type + ", quantity - " + quantity + ", storageDays - " + storageDays;
      }
 }

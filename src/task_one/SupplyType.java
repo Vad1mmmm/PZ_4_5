@@ -1,3 +1,5 @@
+package task_one;
+
 public enum SupplyType {
     AMMUNITION,
     FOOD,
