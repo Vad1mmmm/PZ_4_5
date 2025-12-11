@@ -1,6 +1,9 @@
 package task_two;
 
+import com.sun.security.jgss.GSSUtil;
+
 import java.util.List;
+import java.util.Map;
 
 public class Main {
     public static void main (String[] args){
@@ -16,13 +19,19 @@ public class Main {
         );
 
         System.out.println("Робочі бойові дрони: ");
-        System.out.println(UAVFleetAnalysis.summaryOfNonOperationalUAVsByType(uavs));
+        List<String> uavsFiltered = UAVFleetAnalysis.listIDsOperationalCombatUAVs(uavs);
+        for (String id : uavsFiltered) System.out.println("Id: " + id);
         System.out.println("Дрон з найбільшою кількістю місій: ");
         UAVFleetAnalysis.displayUAVWithMostMissions(uavs);
         System.out.println("Загальні години польоту для розвідувальних БПЛА: ");
         System.out.println(UAVFleetAnalysis.totalFlightHoursForReconUAVs(uavs));
         System.out.println("Середня кількість місій для працездатних БПЛА: ");
         System.out.println(UAVFleetAnalysis.averageMissionsOfOperationalUAVs(uavs));
+        System.out.println("Групування БПЛА за типом: ");
+        UAVFleetAnalysis.groupUAVsByType(uavs);
+        System.out.println("Підсумок непрацездатних БПЛА за типами: ");
+        UAVFleetAnalysis.summaryOfNonOperationalUAVsByType(uavs);
+
         }
 
 

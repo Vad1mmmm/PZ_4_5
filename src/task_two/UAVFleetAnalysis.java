@@ -10,12 +10,12 @@ public class UAVFleetAnalysis {
     private List<UAV> uavsMain = new ArrayList<>();
 
     //1//
-    public static List<String> summaryOfNonOperationalUAVsByType (List<UAV> uavs) {
+    public static List<String> listIDsOperationalCombatUAVs(List<UAV> uavs){
         return uavs.stream()
                 .filter(UAV::isOperational)
-                .filter(u -> u.getType() == UAVType.COMBAT)
+                .filter(u -> u.getType().equals(UAVType.COMBAT))
                 .map(UAV::getId)
-                .collect(Collectors.toList());
+                .toList();
     }
 
     //2//
@@ -46,7 +46,37 @@ public class UAVFleetAnalysis {
     }
     //5//
     public static Map<UAVType, List<UAV>> groupUAVsByType(List<UAV> uavs){
-        return uavs.stream()
-                .
+        Map<UAVType, List<UAV>> map = uavs.stream()
+                .collect(Collectors.groupingBy(UAV::getType));
+
+        map.forEach((type, list) -> {
+            System.out.println("Тип: " + type);
+            list.forEach(u -> System.out.println(" " + u));
+            System.out.println();
+        });
+        return map;
     }
+    //6//
+    public static Map<UAVType, List<UAV>> summaryOfNonOperationalUAVsByType(List<UAV> uavs){
+        Map<UAVType, List<UAV>> map = uavs.stream()
+                .filter(u -> !u.isOperational())
+                .collect(Collectors.groupingBy(
+                        UAV::getType));
+
+        Map<UAVType, Integer> hours = uavs.stream()
+                .filter(u -> !u.isOperational())
+                .collect(Collectors.groupingBy(UAV::getType,
+                        Collectors.summingInt(UAV::getHoursFlown)));
+
+        map.forEach((type, list) -> {
+            System.out.println("Тип: " + type);
+            System.out.println("Загальна кількість годин: " + hours.getOrDefault(type, 0));
+            list.forEach(u -> System.out.println(" " + u));
+            System.out.println();
+        });
+
+        return map;
+    }
+
+
 }
